@@ -1,0 +1,75 @@
+# WiFi Room Sensing Configuration
+
+# Hardware Settings
+hardware:
+  # CSI capture device type: 'intel5300', 'atheros', 'esp32', 'simulation'
+  device_type: 'simulation'  # Change to your hardware type
+  # Number of antennas/receivers
+  num_antennas: 3
+  # Number of subcarriers (typically 30 for Intel 5300, 52/56 for WiFi 5/6)
+  num_subcarriers: 30
+  # Sampling rate (Hz)
+  sampling_rate: 100
+
+# Room Settings
+room:
+  # Room dimensions in meters [length, width, height]
+  dimensions: [5.0, 4.0, 3.0]
+  # Router/transmitter positions [x, y, z] in meters
+  router_positions:
+    - [0.0, 0.0, 1.5]  # Router 1
+    - [5.0, 4.0, 1.5]  # Router 2 (optional extender)
+  # Receiver positions (if using multiple receivers)
+  receiver_positions:
+    - [2.5, 2.0, 1.0]  # Center of room
+
+# AI Model Settings
+model:
+  # Model architecture: 'cnn', 'lstm', 'transformer'
+  architecture: 'cnn'
+  # Input size (time steps)
+  input_timesteps: 100
+  # Number of object classes to detect
+  num_classes: 10
+  # Classes: person, chair, table, sofa, bed, tv, plant, box, door, window
+  class_names: ['person', 'chair', 'table', 'sofa', 'bed', 'tv', 'plant', 'box', 'door', 'window']
+  # Confidence threshold for detection
+  confidence_threshold: 0.5
+  # Pre-trained model path (leave empty to train from scratch)
+  pretrained_path: ''
+
+# 3D Reconstruction Settings
+reconstruction:
+  # Voxel grid resolution (meters per voxel)
+  voxel_size: 0.1
+  # Point cloud density
+  point_density: 1000
+  # Reconstruction method: 'voxel', 'pointcloud', 'mesh'
+  method: 'voxel'
+
+# Training Settings (if training custom model)
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 50
+  validation_split: 0.2
+  save_dir: './models'
+
+# Data Collection
+data:
+  # Directory to save collected CSI data
+  save_dir: './data/csi_raw'
+  # Directory for processed data
+  processed_dir: './data/processed'
+  # Duration of each capture session (seconds)
+  capture_duration: 10
+
+# Visualization
+visualization:
+  # Enable real-time visualization
+  realtime: true
+  # Update interval (milliseconds)
+  update_interval: 100
+  # Save visualizations
+  save_plots: true
+  output_dir: './output'

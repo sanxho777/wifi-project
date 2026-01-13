@@ -1,0 +1,29 @@
+# WiFi Room Sensing - 3D Object Detection System
+# Python 3.8+ required
+
+# Core ML/AI
+torch>=2.8.0
+torchvision>=0.15.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Signal Processing
+scikit-learn>=1.3.0
+
+# 3D Visualization
+matplotlib>=3.7.0
+open3d>=0.17.0
+plotly>=5.14.0
+
+# Data handling
+pandas>=2.0.0
+h5py>=3.8.0
+
+# Configuration
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# For CSI data collection (platform specific)
+# Note: CSI extraction requires special drivers/tools
+# See HARDWARE_SETUP.md for details
+pyserial>=3.5  # For some WiFi CSI tools
